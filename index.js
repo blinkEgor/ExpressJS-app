@@ -1,6 +1,9 @@
 const express = require("express");
+const morgan = require("morgan");
 const app = express();
 const port = 8404;
+
+app.use(morgan("tiny"));
 
 app.get("/", (req, res) => {
     console.log(`New request made: ${req.method}`); // GET
