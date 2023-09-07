@@ -8,16 +8,15 @@ const express = require('express');
 const app = express();
 const port = 8404;
 
-app.get('/products/:id', (req, res) => {
-    const params = req.params;
-    const requestedProduct = products.find(product => 
-        product.id === Number(params.id));
-    if(!requestedProduct) {
-        res.status(404).send({
-            message: `The product with the id ${params.id}`
-        });
+app.post('/products/:id', (req, res) => {
+    const newProduct = req.body;
+    products.push(newProduct);
+    const confirmedEntry = products.find(product => 
+        product === newProduct);
+    if(confirmedEntry) {
+        res.status(201).send(confirmedEntry);
     } else {
-        res.status(200).send(requestedProduct);
+        res.status(400).send("Error Creating Product");
     }
 });
 
