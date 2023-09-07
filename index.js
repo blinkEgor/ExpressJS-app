@@ -11,10 +11,11 @@ app.use("/users", usersRouter);
 
 app.use("/posts", postsRouter);
 
-/*app.get("/", (req, res) => {
+app.get("/", (req, res) => {
     console.log(`New request made: ${req.method}`); // GET
     res.send("<h1>This is the response</h1>"); // This is the response
-});*/
+});
+
 /*
 app.get("/about", (req, res) => {
     console.log(`New request made: ${req.method}`); // GET
