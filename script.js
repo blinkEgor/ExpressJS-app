@@ -14,6 +14,16 @@ const connection = mysql.createConnection({
     password: 'myPassword',
     database: 'myDB'
 });
+    // проверка ошибки
+connection.connect(error => {
+    if(error) { throw error }
+    console.log('Connected!');
+});
+// прерывание соединения (рекомендуется)
+connection.end(error => {
+    if(error) { throw error }
+    console.log('Connection closed!');
+});
 /* ------------------------- */
 
 /* подключение express */
