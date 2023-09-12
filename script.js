@@ -7,19 +7,20 @@ const products = [
 /* -------------------- */
 
 /* подключение к базе данных */ 
+require('dotenv').config();
 const mysql = require('mysql');
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'myUser',
-    password: 'myPassword',
-    database: 'myDB'
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE,
 });
     // проверка ошибки
 connection.connect(error => {
     if(error) { throw error }
     console.log('Connected!');
 });
-// прерывание соединения (рекомендуется)
+    // прерывание соединения (рекомендуется)
 connection.end(error => {
     if(error) { throw error }
     console.log('Connection closed!');
