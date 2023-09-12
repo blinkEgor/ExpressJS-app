@@ -9,19 +9,22 @@ const products = [
 /* подключение к базе данных */ 
 require('dotenv').config();
 const mysql = require('mysql');
-const connection = mysql.createConnection({
+const con = mysql.createConnection({
     host: process.env.HOST,
     user: process.env.USER,
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
 });
-    // проверка ошибки
-connection.connect(error => {
-    if(error) { throw error }
-    console.log('Connected!');
+    // инструкция подключения
+con.connect(err => {
+    if(err) { throw err }
+    con.query("SELECT * FROM Customers", (error, result) => {
+        if(error) throw error;
+        console.log(result[2].name);
+    });
 });
     // прерывание соединения (рекомендуется)
-connection.end(error => {
+con.end(error => {
     if(error) { throw error }
     console.log('Connection closed!');
 });
