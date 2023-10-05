@@ -18,3 +18,7 @@ app.listen(3333, () => {
 });
 
 // node index.js            "start server"
+
+// mkdir folderName
+// cd folderName
+// cd ..
