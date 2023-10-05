@@ -1,1 +1,4 @@
-alert('it works');
+function sayWorked() {
+    alert('it works');
+}
+sayWorked();

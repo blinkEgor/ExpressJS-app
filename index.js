@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Create routes
 app.get('/', (req, res) => {
-    res.send({ message: 'Hello WWW!' });
+    res.sendFile(`${__dirname}/public/index.html`);
 });
 
 // listening on a port
